@@ -33,5 +33,6 @@
   <ItemGroup>
     <None Include="vertex.s" />
     <None Include="fragment.s" />
+    <None Include="Fragment_EX7.8.1.s" />
   </ItemGroup>
 </Project>
