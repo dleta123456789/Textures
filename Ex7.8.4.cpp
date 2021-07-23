@@ -35,17 +35,19 @@ void processInput(GLFWwindow* window)
 
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
+	//Having a hardlimit on how much mixValue can change.
+	//Upper limit is 2.0f and lower limit is -1.0f
 	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
 		if (mixValue < 2.0f) {
 			cout << "Key UP";
 			mixValue = mixValue + 0.001f;
 		}
 	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
-		if(mixValue >-1.0f){
+		if (mixValue > -1.0f) {
 			cout << "Key Down";
 			mixValue = mixValue - 0.001f;
 		}
-		
+
 }
 
 //main code file
@@ -145,7 +147,7 @@ int main()
 	*Generate Texture ID like we have done prevously for VBO,VAO etc
 	* glGenTextures takes the number of textures we are going to have
 	* then we bind it
-	* 
+	*
 	* Then we generate the texture using glTexImage2D
 	* Parameters:
 	* Target
@@ -177,7 +179,7 @@ int main()
 	// load image, create texture and generate mipmaps
 	int width, height, nrChannels;
 	stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
-	unsigned char* data = stbi_load("D:/PRIVATE PROJECT/Learning OpenGL/Files/Textures/container.jpg", &width, &height,&nrChannels, 0);
+	unsigned char* data = stbi_load("D:/PRIVATE PROJECT/Learning OpenGL/Files/Textures/container.jpg", &width, &height, &nrChannels, 0);
 	if (data)
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
@@ -247,7 +249,7 @@ int main()
 		ourShader.setFloat("mixValue", mixValue);
 		ourShader.use();
 		//Update Shader input
-		
+
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
